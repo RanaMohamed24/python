@@ -1,0 +1,6 @@
+From: samy@iti.eg
+To: manager@iti.eg
+
+Hi, Manager
+This is a test email from Samy.
+thanks
