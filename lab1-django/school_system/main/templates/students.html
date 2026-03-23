@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">Students</h2>
+
+
+<div class="card p-4 mb-4 shadow">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <input class="form-control mb-2" type="text" name="name" placeholder="Name">
+    <input class="form-control mb-2" type="number" name="age" placeholder="Age">
+    <input class="form-control mb-2" type="email" name="email" placeholder="Email">
+    <input class="form-control mb-2" type="file" name="image">
+
+    <button class="btn btn-primary">Add Student</button>
+</form>
+</div>
+
+
+<div class="row">
+{% for student in students %}
+    <div class="col-md-4">
+        <div class="card mb-4 shadow">
+
+            <img src="{{ student.image.url }}" class="card-img-top" height="200">
+
+            <div class="card-body">
+                <h5>{{ student.name }}</h5>
+                <p>{{ student.age }} years</p>
+                <p>{{ student.email }}</p>
+
+                <a href="/delete/{{ student.id }}" class="btn btn-danger btn-sm">
+                    Delete
+                </a>
+            </div>
+
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}
